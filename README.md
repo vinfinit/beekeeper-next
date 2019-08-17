@@ -1,5 +1,5 @@
 # Beekeeper-next
-A Next.js app based on the Multiverse site template, designed by HTML5 UP.
+A Next.js serverless app using ZEIT Now cloud platform.
 
 ## Preview
 
@@ -10,21 +10,27 @@ To get started, simply clone the repository and run `npm install`
 
 ```
 # Clone the repo
-git clone https://github.com/vinfinit/beekeeeper-next.git
+git clone https://github.com/vinfinit/beekeeper-next.git
 
 # Move into the new directory
-cd beekeeeper-next/
+cd beekeeper-next/
 
 # Install npm packages
 npm install
 
-# Start up the next.js dev server, browse to http://localhost:3000/
-npm run dev
+# Install Now CLI
+npm i -g now 
+
+# Start up the now dev server, browse to http://localhost:3000/
+now dev
 ```
 
-## Generating the Static Site
+## Deploy
 
 ```
-# Build and export the site, the static files are generated in the out/ folder
-npm run export
+# Define Now Secrets
+now secrets add api-url <secret-value>
+
+# Deploy app with a single command in your terminal
+now
 ```
