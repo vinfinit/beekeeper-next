@@ -2,7 +2,6 @@ import Layout from '../components/Layout';
 import Link from 'next/link';
 import fetch from 'isomorphic-unfetch';
 import InfiniteScroll from 'react-infinite-scroller';
-import config from '../config';
 
 const galleryStyle = {
   display: 'flex',
@@ -36,7 +35,7 @@ const Index = props => (
 );
 
 Index.getInitialProps = async function() {
-  const { API_URL } = config;
+  const { API_URL } = process.env;
   const res = await fetch(`${API_URL}/search`);
   const data = await res.json();
 
