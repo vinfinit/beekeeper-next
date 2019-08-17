@@ -36,7 +36,7 @@ const Index = props => (
 
 Index.getInitialProps = async function() {
   const { API_URL } = process.env;
-  const res = await fetch(`${API_URL}/search`);
+  const res = await fetch(`${API_URL || ''}/api/search`);
   const data = await res.json();
 
   console.log(`Show data fetched. Count: ${data.length}`);
