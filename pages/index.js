@@ -1,5 +1,6 @@
 import Layout from '../components/Layout';
 import Link from 'next/link';
+import { Fragment } from 'react';
 import fetch from 'isomorphic-unfetch';
 import InfiniteScroll from 'react-infinite-scroller';
 
@@ -22,12 +23,12 @@ const Index = props => (
     <ul style={galleryStyle}>
       {props.posts.map(post => (
         <li key={post._id}>
-          <Link href="/posts/[id]" as={`/posts/${post._id}`}>
+          <Fragment href="/posts/[id]" as={`/posts/${post._id}`}>
             <article style={articleStyle}>
               <img src={post.image} />
               <a>Score: {post.score}</a>
             </article>
-          </Link>
+          </Fragment>
         </li>
       ))}
     </ul>
