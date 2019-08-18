@@ -18,14 +18,14 @@ const articleStyle = {
 
 const Index = props => (
   <Layout>
-    <h1>Batman TV Shows</h1>
+    <h1>Beekeeper</h1>
     <ul style={galleryStyle}>
-      {props.shows.map(show => (
-        <li key={show.id}>
-          <Link href="/posts/[id]" as={`/posts/${show.id}`}>
+      {props.posts.map(post => (
+        <li key={post._id}>
+          <Link href="/posts/[id]" as={`/posts/${post._id}`}>
             <article style={articleStyle}>
-              <img src={show.image.medium} />
-              <a>{show.name}</a>
+              <img src={post.image} />
+              <a>Score: {post.score}</a>
             </article>
           </Link>
         </li>
@@ -37,13 +37,11 @@ const Index = props => (
 Index.getInitialProps = async function() {
   const { API_URL } = process.env;
   const res = await fetch(`${API_URL || ''}/api/search`);
-  const data = await res.json();
+  const posts = await res.json();
 
-  console.log(`Show data fetched. Count: ${data.length}`);
+  console.log(`Posts data fetched. Count: ${posts.length}`);
 
-  return {
-    shows: data.map(entry => entry.show)
-  };
+  return { posts };
 };
 
 export default Index;

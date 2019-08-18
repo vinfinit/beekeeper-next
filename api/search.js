@@ -1,8 +1,13 @@
-import fetch from 'isomorphic-unfetch';
+import connectToDatabase from '../database/connect';
+import { ObjectID } from 'mongodb';
 
 module.exports = async (req, res) => {
-  // const queryParams = { q: req.params.q, page: req.params.page }
-  const tvRes = await fetch('https://api.tvmaze.com/search/shows?q=batman')
-  const data = await tvRes.json()
-  res.json(data)
+  const { query } = req;
+  const db = await connectToDatabase(process.env.MONGODB_URI);
+  const collection = await db.collection('bees');
+
+  const filter = query.id ? {_id: ObjectID(query.id)} : {};
+  const post = await collection.find(filter).toArray();
+
+  res.json(post)
 };
