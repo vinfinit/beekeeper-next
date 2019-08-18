@@ -1,9 +1,6 @@
 # Beekeeper-next
 A Next.js serverless app using ZEIT Now cloud platform.
 
-## Preview
-
-
 ## Getting Started
 
 To get started, simply clone the repository and run `npm install`
@@ -21,6 +18,9 @@ npm install
 # Install Now CLI
 npm i -g now 
 
+# Update environment variables in .env
+MONGODB_URI=mongodb+srv://<user>:<password>@cluster.mongodb.net/<database-name>?retryWrites=true >> .env
+
 # Start up the now dev server, browse to http://localhost:3000/
 now dev
 ```
@@ -30,6 +30,7 @@ now dev
 ```
 # Define Now Secrets
 now secrets add api-url <secret-value>
+now secrets add mongodb-uri <secret-value>
 
 # Deploy app with a single command in your terminal
 now
