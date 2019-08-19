@@ -1,6 +1,5 @@
 import Layout from '../components/Layout';
 import Link from 'next/link';
-import { Fragment } from 'react';
 import fetch from 'isomorphic-unfetch';
 import InfiniteScroll from 'react-infinite-scroller';
 
@@ -23,21 +22,29 @@ const Index = props => (
     <ul style={galleryStyle}>
       {props.posts.map(post => (
         <li key={post._id}>
-          <Fragment href="/posts/[id]" as={`/posts/${post._id}`}>
+          <Link href="/posts/[id]" as={`/posts/${post._id}`}>
             <article style={articleStyle}>
               <img src={post.image} />
               <a>Score: {post.score}</a>
             </article>
-          </Fragment>
+          </Link>
         </li>
       ))}
     </ul>
   </Layout>
 );
 
-Index.getInitialProps = async function() {
-  const { API_URL } = process.env;
-  const res = await fetch(`${API_URL || ''}/api/search`);
+Index.getInitialProps = async function(ctx) {
+  const { 
+    req: {
+      headers: {
+        'x-forwarded-host': host = '',
+        'x-forwarded-proto': proto = '',
+      } = {},
+    } = {},
+  } = ctx;
+  const uri = proto && host ? `${proto}://${host}` : '';
+  const res = await fetch(`${uri}/api/search`);
   const posts = await res.json();
 
   console.log(`Posts data fetched. Count: ${posts.length}`);
