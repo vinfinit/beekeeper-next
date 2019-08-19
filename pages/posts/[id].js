@@ -1,5 +1,7 @@
 import Layout from '../../components/Layout';
+
 import fetch from 'isomorphic-unfetch';
+import uriUtil from '../../utils/uri';
 
 const Post = props => (
   <Layout>
@@ -9,10 +11,9 @@ const Post = props => (
   </Layout>
 );
 
-Post.getInitialProps = async function(context) {
-  const { id } = context.query;
-  const { API_URL } = process.env;
-  const res = await fetch(`${API_URL || ''}/api/search?id=${id}`);
+Post.getInitialProps = async function(ctx) {
+  const { id } = ctx.query;
+  const res = await fetch(`${uriUtil.getFromCtx(ctx)}/api/search?id=${id}`);
   const post = await res.json();
 
   // console.log(`Fetched show: ${post.length}`);

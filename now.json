@@ -2,7 +2,6 @@
   "name": "beekeeper-next",
   "version": 2,
   "env": {
-    "API_URL": "@api-url",
     "MONGODB_URI": "@mongodb-uri"
   }
 }

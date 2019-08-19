@@ -1,7 +1,9 @@
-import Layout from '../components/Layout';
 import Link from 'next/link';
-import fetch from 'isomorphic-unfetch';
+import Layout from '../components/Layout';
 import InfiniteScroll from 'react-infinite-scroller';
+
+import fetch from 'isomorphic-unfetch';
+import uriUtil from '../utils/uri';
 
 const galleryStyle = {
   display: 'flex',
@@ -35,16 +37,7 @@ const Index = props => (
 );
 
 Index.getInitialProps = async function(ctx) {
-  const { 
-    req: {
-      headers: {
-        'x-forwarded-host': host = '',
-        'x-forwarded-proto': proto = '',
-      } = {},
-    } = {},
-  } = ctx;
-  const uri = proto && host ? `${proto}://${host}` : '';
-  const res = await fetch(`${uri}/api/search`);
+  const res = await fetch(`${uriUtil.getFromCtx(ctx)}/api/search`);
   const posts = await res.json();
 
   console.log(`Posts data fetched. Count: ${posts.length}`);

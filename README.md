@@ -29,7 +29,6 @@ now dev
 
 ```
 # Define Now Secrets
-now secrets add api-url <secret-value>
 now secrets add mongodb-uri <secret-value>
 
 # Deploy app with a single command in your terminal
