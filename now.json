@@ -3,6 +3,7 @@
   "version": 2,
   "env": {
     "MONGODB_URI": "@mongodb-uri",
-    "GCP_STORAGE_BUCKET": "@gcp-storage-bucket"
+    "CLOUD_BUCKET": "@cloud-bucket",
+    "CLOUD_DIRECTORY": "@cloud-directory"
   }
 }

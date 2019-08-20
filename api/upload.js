@@ -1,7 +1,21 @@
-import { getImage } from "../storage/gcp";
+import multer from 'multer';
+import util from 'util';
+import { sendUploadToGCS } from "../storage/gcp";
 
 module.exports = async (req, res) => {
-  const images = await getImage();
+  const upload = multer({
+    storage: multer.memoryStorage(),
+    limits: {
+      fileSize: 1 * 1024 * 1024,    // no larger than 1mb
+    }
+  });
 
-  res.status(200).json(images);
+  await util.promisify(upload.single('image'))(req, {});
+
+  if (req.file) {
+    const publicUrl = await sendUploadToGCS(req);
+    res.status(200).json({ publicUrl });
+  }
+
+  res.status(204).json();
 };
