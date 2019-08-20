@@ -3,7 +3,6 @@
   "version": 2,
   "env": {
     "MONGODB_URI": "@mongodb-uri",
-    "GOOGLE_APPLICATION_CREDENTIALS": "@google-application-credentials",
     "GCP_STORAGE_BUCKET": "@gcp-storage-bucket"
   }
 }
