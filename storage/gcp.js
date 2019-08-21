@@ -44,7 +44,12 @@ const sendUploadToGCS = async req => {
     stream.on('error', reject);
   
     stream.on('finish', async () => {
-      await file.makePublic();
+      try {
+        await file.makePublic();
+      }
+      catch(err) {
+        reject(err);
+      }
       resolve(getPublicUrl(gcsname));
     });
   
