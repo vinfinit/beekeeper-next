@@ -2,6 +2,8 @@
   "name": "beekeeper-next",
   "version": 2,
   "env": {
-    "MONGODB_URI": "@mongodb-uri"
+    "MONGODB_URI": "@mongodb-uri",
+    "CLOUD_BUCKET": "@cloud-bucket",
+    "CLOUD_DIRECTORY": "@cloud-directory"
   }
 }

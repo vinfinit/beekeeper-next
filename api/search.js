@@ -1,13 +1,9 @@
-import connectToDatabase from '../database/connect';
-import { ObjectID } from 'mongodb';
+import { findBees } from '../database/bees';
 
 module.exports = async (req, res) => {
   const { query } = req;
-  const db = await connectToDatabase(process.env.MONGODB_URI);
-  const collection = await db.collection('bees');
 
-  const filter = query.id ? {_id: ObjectID(query.id)} : {};
-  const post = await collection.find(filter).toArray();
+  const bees = await findBees(query.id);
 
-  res.json(post)
+  res.json(bees);
 };
