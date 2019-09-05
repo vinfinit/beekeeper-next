@@ -31,9 +31,11 @@ now dev
 ## Deploy
 
 ```
+# Add Google Cloud integration to your project
+# https://zeit.co/integrations/gcloud
+
 # Define Now Secrets
 now secrets add mongodb-uri <secret-value>
-now secrets add gcloud-credentials <gcloud-cred>
 now secrets add cloud-bucket <gcs-bucket>
 now secrets add cloud-directory <gcs-dir>
 

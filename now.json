@@ -3,7 +3,6 @@
   "version": 2,
   "env": {
     "MONGODB_URI": "@mongodb-uri",
-    "GCLOUD_CREDENTIALS": "@gcloud-credentials",
     "CLOUD_BUCKET": "@cloud-bucket",
     "CLOUD_DIRECTORY": "@cloud-directory"
   }
