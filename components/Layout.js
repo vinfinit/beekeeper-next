@@ -1,10 +1,9 @@
 import Header from './Header';
 
-const layoutStyle = {
-};
+import styles from '../styles/components/layout.scss';
 
 const Layout = props => (
-  <div style={layoutStyle}>
+  <div className={styles.main}>
     <Header />
     {props.children}
   </div>

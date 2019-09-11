@@ -6,27 +6,16 @@ import InfiniteScroll from 'react-infinite-scroller';
 import fetch from 'isomorphic-unfetch';
 import uriUtil from '../utils/uri';
 
-const galleryStyle = {
-  display: 'flex',
-  flexWrap: 'wrap',
-  justifyContent: 'space-between',
-  listStyle: 'none',
-  padding: 0
-};
-
-const articleStyle = {
-  display: 'flex',
-  flexDirection: 'column'
-}
+import styles from "../styles/main.scss";
 
 const Index = props => (
   <Layout>
     <h1>Beekeeper</h1>
-    <ul style={galleryStyle}>
+    <ul className={styles.flexContainer}>
       {props.bees.map(post => (
         <li key={post._id}>
           <Link href="/posts/[id]" as={`/posts/${post._id}`}>
-            <article style={articleStyle}>
+            <article className={styles.flexColumn}>
               <img src={post.image} />
               <a>Score: {post.score}</a>
             </article>

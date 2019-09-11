@@ -1,10 +1,6 @@
 import { Component } from 'react';
 
-const uploadStyle = {
-  position: 'fixed',
-  right: '1px',
-  top: '5px',
-};
+import styles from '../styles/components/upload.scss';
 
 class Upload extends Component {
   constructor() {
@@ -38,7 +34,7 @@ class Upload extends Component {
 
   render() {
     return (
-      <div style={uploadStyle}>
+      <div className={styles.upload}>
         <form onSubmit={this.handleSubmit}>
           <input 
             name="image" 
