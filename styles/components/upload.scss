@@ -1,5 +1,26 @@
 .upload {
   position: fixed;
-  right: 1px;
-  top: 5px;
+  right: 24px;
+  bottom: 24px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #e2a917;
+  box-shadow: 0 0 5px #3c2827;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  &:hover {
+    background: lighten(#e2a917, 5%);
+  }
+}
+
+.icon {
+  cursor: pointer;
+}
+
+.uploadFile {
+  display: none;
 }

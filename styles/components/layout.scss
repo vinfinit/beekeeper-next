@@ -1,9 +1,26 @@
 .header {
-  display: block;
+  padding-right: 24px;
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  height: 60px;
+  background: #424244;
 }
 
-.headerLink {
-  margin-right: 15px;
+.logo {
+  margin-right: auto;
+  cursor: pointer;
+}
+
+.link {
+  margin-left: 18px;
+  font-size: 16px;
+  color: #cbd5d7;
+  text-decoration: none;
+  &:hover {
+    color: white;
+  }
 }
 
 .main {

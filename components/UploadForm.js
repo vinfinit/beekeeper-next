@@ -1,5 +1,4 @@
 import { Component } from 'react';
-
 import styles from '../styles/components/upload.scss';
 
 class Upload extends Component {
@@ -13,7 +12,17 @@ class Upload extends Component {
   handleFileChange = e => {
     this.setState({
       [e.target.name]: e.target.files[0],
-    })
+    });
+  }
+
+  uploadFile = e => {
+    const formData = new FormData();
+    formData.append([e.target.name], e.target.files[0]);
+
+    fetch('/api/upload', {
+      method: 'POST',
+      body: formData,
+    }).then(r => alert('done'));
   }
 
   handleSubmit = async e => {
@@ -35,17 +44,40 @@ class Upload extends Component {
   render() {
     return (
       <div className={styles.upload}>
-        <form onSubmit={this.handleSubmit}>
+        <label for="file-upload">
+          {/* TODO use SVG as icon */}
+          <img className={styles.icon} src="static/img/camera.svg"/>
+        </label>
+        <input
+          className={styles.uploadFile}
+          id="file-upload"
+          name="image" 
+          type="file"
+          onChange={this.uploadFile}>
+        </input> 
+        {/* <form onSubmit={this.handleSubmit}>
           <input 
             name="image" 
             type="file"
             onChange={this.handleFileChange}>
           </input>
           <input type="submit"></input>
-        </form>
+        </form> */}
       </div>
     )
   }
 };
 
 export default Upload;
+
+{/* <label for="file-upload"> */}
+{/* TODO use SVG as icon */}
+{/* <img className={styles.icon} src="static/img/camera.svg"/>
+</label>
+<input
+className={styles.uploadFile}
+  id="file-upload"
+  name="image" 
+  type="file"
+  onChange={this.handleFileChange}>
+</input> */}

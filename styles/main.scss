@@ -1,14 +1,31 @@
 $font-size: 50px;
+$fontCantarell: 'Cantarell', sans-serif;
+
+body {
+  margin: 0;
+  font-family: $fontCantarell;
+}
 
 .flexContainer {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   list-style: none;
-  padding: 0;
+  padding: 0 6px;
+}
+
+.item {
+  margin: 18px;
 }
 
 .flexColumn {
   display: flex;
   flex-direction: column;
 }
+
+// TODO set global color
+// #424244
+// #cbd5d7
+// #e2a917
+// #3c2827
+// #1d1314
